@@ -64,7 +64,7 @@ export class DeliveryPackController {
     response = deliveryPackages.map((deliveryPackage) => {
 
       return {
-        deliveryDate: moment(deliveryPackage.DeliveryDate).format('YYYY-MM-DD HH:mm:ss'),
+        deliveryDate: moment(deliveryPackage.DeliveryDate).format('YYYY-MM-DD HH:mm:ss').split(' ')[0],
         carrier: {
           id: deliveryPackage.Carrier.id,
           name: deliveryPackage.Carrier.name,
