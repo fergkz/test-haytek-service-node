@@ -3,16 +3,77 @@ Microserviço em forma de API para efetuar a separação de de pedidos em lotes,
 
 ### STEP by STEP
 
-#### Instalação do NEST
+### Instalação do NEST
 
-1.  Instalação CLU nest
+
+1. ### Instalação do CLI nest
     - https://docs.nestjs.com/fist-steps
 
-1. Criar novo projeto
-    - `$ nest new .`
+1. ### Criar novo projeto
+
+    *Não é necessário executar para apenas rodar o projeto pronto*
+
+    ```
+    $ nest new .
+    ```
+
+1. ### Instalar o Prisma como dependência de desenvolvimento
+
+    *Prisma é um ORM para simplificar a integração com banco de dados dentro do NodeJS*
+
+    Instalando o prisma
+  
+    ```
+    $ npm install prisma -D
+    ```
+
+    Inicializamos o primeiro Schema em prisma para SQLite
+
+    ```
+    $ npx prisma init --datasource-provider SQLite
+    ```
+
+    Após ter adicionado ou alterado uma model, rodar o migrate abaixo
+
+    ```
+    $ npx prisma migrate dev
+    ```
+
+    Também instalaremos o Prisma Client
+
+    ```
+    $ npm i @prisma/client
+    ```
+
+1. ### Instalar o class validator
+
+    *O `class-validator` é utilizado para validar as entradas (ou saídas) de um payload baseado na classe referenciada*
+
+    ```
+    npm i class-validator class-transformer
+    ```
+
+1. ### Instalar o AXIOS
+
+    *O `axios` é utilizado para chamadas de requisições HTTP. Vide instalação e utilização em https://docs.nestjs.com/techniques/http-module.
+
+    ```
+    npm i --save @nestjs/axios axios
+    ```
 
 
+1. ### Rodar a aplicação em modo desenvolvimento com debug
+
+    Para o desenvolvimento, melhor rodar diretamente no powershell, por causa de velocidade de execução
+
+    ```
+    $ npm run start:debug
+    ```
     
+    
+
+
+
 
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------
