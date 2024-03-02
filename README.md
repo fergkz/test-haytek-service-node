@@ -1,200 +1,154 @@
-# test-haytek-service-node
+# Separação de pedidos em lotes - API NodeJS + NestJS
+
+![GitHub repo size](https://img.shields.io/github/repo-size/fergkz/test-haytek-service-node?style=for-the-badge&c=1)
+![GitHub language count](https://img.shields.io/github/languages/count/fergkz/test-haytek-service-node?style=for-the-badge&c=1)
+
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+![](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![](https://img.shields.io/badge/GitKraken-179287?style=for-the-badge&logo=GitKraken&logoColor=white)
+![](https://img.shields.io/badge/Google_chrome-4285F4?style=for-the-badge&logo=Google-chrome&logoColor=white)
+
 Microserviço em forma de API para efetuar a separação de de pedidos em lotes, otimizando a utilização de caixas agrupadas por transportadora e cliente.
 
-### STEP by STEP
-
-### Instalação do NEST
+[Descrição, regras de negócio e referências](https://github.com/haytek-project/test-haytek/blob/main/README.md)
 
 
-1. ### Instalação do CLI nest
-    - https://docs.nestjs.com/fist-steps
+## Instalação e execução do sistema
 
-1. ### Criar novo projeto
+### Sistema Operacional
 
-    *Não é necessário executar para apenas rodar o projeto pronto*
+> [!NOTE] 
+> A instalação e execução deve ser efetuada em um sistema operacional linux Ubuntu. Caso contrário, os comandos abaixo devem ser adequados para o seu sistema operacional.
 
-    ```
-    $ nest new .
-    ```
+- Ubuntu 18.04.6 - Ram 1GB - 1 core CPU
 
-1. ### Instalar o Prisma como dependência de desenvolvimento
+### Linguagens / Tecnologias
 
-    *Prisma é um ORM para simplificar a integração com banco de dados dentro do NodeJS*
+- NodeJS v18.18.2
+- NPM v9.8.1
+- VSCode
+- Git / Gitbash / GitKraken
+- Github
 
-    Instalando o prisma
-  
-    ```
-    $ npm install prisma -D
-    ```
+### Preparação do Ambiente
 
-    Inicializamos o primeiro Schema em prisma para SQLite
+Certifique-se de ter privilégios de superusuário ou utilize `sudo` para executar os comandos.
 
-    ```
-    $ npx prisma init --datasource-provider SQLite
-    ```
+Baixe o projeto para o seu computador. Pode ser pelo git mesmo, mas indico baixar o ZIP e extrair daqui se você não for contribuir com a evolução do projeto e necessitar apenas avaliar.
 
-    Após ter adicionado ou alterado uma model, rodar o migrate abaixo
+#### 1. Atualização do Sistema
 
-    ```
-    $ npx prisma migrate dev
-    ```
+```
+sudo apt-get update && sudo apt-get upgrade
+```
 
-    Também instalaremos o Prisma Client
-
-    ```
-    $ npm i @prisma/client
-    ```
-
-1. ### Instalar o class validator
-
-    *O `class-validator` é utilizado para validar as entradas (ou saídas) de um payload baseado na classe referenciada*
-
-    ```
-    npm i class-validator class-transformer
-    ```
-
-1. ### Instalar o AXIOS
-
-    *O `axios` é utilizado para chamadas de requisições HTTP. Vide instalação e utilização em https://docs.nestjs.com/techniques/http-module.
-
-    ```
-    npm i --save @nestjs/axios axios
-    ```
-
-1. ### Instalar o moment
-
-    *A biblioteca `moment` vai nos auxiliar a converter o tipo de data recebida para o correto
-
-    ```
-    npm install moment
-    ```
-
-1. ### Criando um proxy reverso (compatibilização com a tela local)
-
-    <!-- *A biblioteca `moment` vai nos auxiliar a converter o tipo de data recebida para o correto -->
-
-    ```
-    npm install http-proxy-middleware
-    ```
-
-
-1. ### Rodar a aplicação em modo desenvolvimento com debug
-
-    Para o desenvolvimento, melhor rodar diretamente no powershell, por causa de velocidade de execução
-
-    ```
-    $ npm run start:debug
-    ```
+#### 2. ### Instalação do CLI nest
     
-    
+Siga as orientações em https://docs.nestjs.com/fist-steps
 
+#### 3. Instalar o AXIOS
 
+*O `axios` é utilizado para chamadas de requisições HTTP. Vide instalação e utilização em https://docs.nestjs.com/techniques/http-module.*
 
-
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
-
-
-
-
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+```
+npm i --save @nestjs/axios axios
 ```
 
-## Running the app
+#### 4. Instalar o moment
 
-```bash
-# development
-$ npm run start
+*A biblioteca `moment` vai nos auxiliar a converter o tipo de data recebida para o correto*
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+npm install moment
 ```
 
-## Test
+#### 5. Criando um proxy reverso
 
-```bash
-# unit tests
-$ npm run test
+*Precisamos criar um proxy reverso para não haver problemas com CORS nas requisições em tela*
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+npm install http-proxy-middleware
 ```
 
-## Support
+### Rodando a Aplicação
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Vá até o diretório do projeto baixado e execute:
 
-## Stay in touch
+```
+$ npm run start:debug
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Versão 1.0
 
-## License
+#### Regras Funcionais
+- R1. Pedidos enviados dentro de uma mesma data para um mesmo endereço devem ser agrupados em entregas.
+- R2. Uma mesma entrega pode conter mais de uma caixa.
+- R3. Os pedidos só podem ser agrupados, se forem enviados pela mesma transportadora
+- R4. Cada transportadora tem um horário de corte. Pedidos realizados antes do horário de corte, são enviados no mesmo dia.
+- R5. Cada transportadora tem um horário de corte. Pedidos realizados após o horário de corte, são enviados no dia seguinte.
+- R6. As entregas devem ser agrupados no menor número de caixas possível.
+- R7. Usar sempre a menor caixa disponível.
+    - R7.1. Pode conflitar com a regra R6.
 
-Nest is [MIT licensed](LICENSE).
+        Exemplo:
+        > Caixa P = 5 itens, Caixa M = 10 itens, Caixa G = 30 itens.<br/>
+        > Separação de 11 itens.
+        > 
+        > Pela regra R6 devemos utilizar a caixa G, pois gera uma menor quantidade de caixas, então, não podemos utilizar a menor caixa disponível pois necessitaria de 2 caixa (P+M).
+
+
+- R8. A Soma da quantidade máxima de itens das caixas de uma mesma entrega deve ser a menor possível.
+
+    - R8.1. Pode conflitar com a regra R6.
+
+        Exemplo:
+        > Caixa P = 5 itens, Caixa M = 10 itens, Caixa G = 30 itens.<br/>
+        > Separação de 11 itens.
+        > 
+        > Pela regra R6 devemos utilizar a caixa G, pois gera uma menor quantidade de caixas, mas gera um volume máximo total de itens = 30.<br/>
+        > Para obter a menor soma da capacidade das caixas precisaríamos de uma caixa M e uma P, somando um total de 15 em capacidade.
+        > 
+        > Então utilizando duas caixas (P+M = 15) temos uma soma de capacidade menor que utilizando apenas uma caixa (G = 30), porém, como a R6 precede a esta, devemos considerar primeiro a R6.
+
+- R9. O mesmo pedido pode ser quebrado em mais de uma caixa, se preciso
+
+#### Requisitos Obrigatórios
+
+- [x] Documentação de como configurar o ambiente e rodar a aplicação no computador do avaliador
+- [x] Boas práticas de programação
+- [x] Código fácil de entender e manter
+
+#### Adições
+- [x] Microserviço Hexagonal
+- [x] Proxy reverso de APIs externas para acesso local no frontend
+- [x] Documentação da API com swagger
+- [x] Inversão de dependências
+- [x] Injeção de dependências
+
+#### Pontos de Atenção
+- O sistema não está levando em consideração o volume dos itens
+- O sistema não está levando em consideração a capacidade de carga de cada caminhão
+- O sistema não possui informações de itens individuais, portanto, não é possível gerar etiquetas isoladas por pacote
+
+#### Observações
+- Não se fez necessário a utilização de banco de dados
+
+#### Próximos Passos (versão 1.1+)
+
+- [ ] Consolidar dados externos em banco de dados local
+- [ ] Adicionar cache nas requisições externas
+- [ ] Efetuar chamadas assíncronas nas APIs externas
+- [ ] Adicionar indicadores de desempenho da aplicação
+- [ ] Tratar itens individualmente com suas propriedades
+- [ ] Adicionar sistema de geração de etiquetas
+- [ ] Alterar atributos para público nas entidades
+- [ ] Adicionar autenticação de acesso
+- [ ] Adicionar limitadores nas APIs externas e internas
+- [ ] Adicionar filtros nas APIs externas e internas
+- [ ] Compatibilizar a containerização por Docker
