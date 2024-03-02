@@ -61,6 +61,14 @@ Microserviço em forma de API para efetuar a separação de de pedidos em lotes,
     npm i --save @nestjs/axios axios
     ```
 
+1. ### Instalar o moment
+
+    *A biblioteca `moment` vai nos auxiliar a converter o tipo de data recebida para o correto
+
+    ```
+    npm install moment
+    ```
+
 
 1. ### Rodar a aplicação em modo desenvolvimento com debug
 

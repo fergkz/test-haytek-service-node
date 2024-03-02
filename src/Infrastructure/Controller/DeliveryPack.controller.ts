@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import * as moment from "moment";
 import { AddressServiceContract } from 'src/Application/Contract/Service/AddressServiceContract';
 import { BoxServiceContract } from 'src/Application/Contract/Service/BoxServiceContract';
 import { CarrierServiceContract } from 'src/Application/Contract/Service/CarrierServiceContract';
@@ -61,8 +62,9 @@ export class DeliveryPackController {
     const deliveryPackages = await usecase.run();
 
     response = deliveryPackages.map((deliveryPackage) => {
+
       return {
-        deliveryDate: deliveryPackage.DeliveryDate.toISOString(),
+        deliveryDate: moment(deliveryPackage.DeliveryDate).format('YYYY-MM-DD HH:mm:ss'),
         carrier: {
           id: deliveryPackage.Carrier.id,
           name: deliveryPackage.Carrier.name,
