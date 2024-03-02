@@ -36,8 +36,62 @@ export class GroupByDelivery {
 
     async run(): Promise<DeliveryPackage[]> {
 
+        const addresses: AddressEntity[] = await this.AddressService.listAllAddresses();
+        const boxes: BoxEntity[] = await this.BoxService.listAllBoxes();
+        const carriers: CarrierEntity[] = await this.CarrierService.listAllCarriers();
+        const orders: OrderEntity[] = await this.OrderService.listAllOrders();
+
+        const exampleOfDeliveryPackage: DeliveryPackage = {
+            DeliveryDate: new Date(),
+            Carrier: {
+                id: "1",
+                name: "Carrier 1",
+                cutOffTimeHour: 12,
+                cutOffTimeMinute: 30,
+            },
+            Address: {
+                id: "1",
+                street: "Rua dos Bobos",
+                complement: "Apto 123",
+                neighborhood: "Centro",
+                zipcode: "12345-678",
+                city: "São Paulo",
+                state: "SP",
+            },
+            BoxPackages: [
+                {
+                    Box: {
+                        boxType: "Small",
+                        maxQuantity: 10,
+                    },
+                    QuantityInBox: 5,
+                    Orders: [
+                        {
+                            Order: {
+                                id: "1",
+                                addressId: "1",
+                                carrierId: "1",
+                                quantity: 5,
+                                createdAt: new Date(),
+                            },
+                            Quantity: 5,
+                        }
+                    ]
+                }
+            ],
+            AllOrders: [
+                {
+                    id: "1",
+                    addressId: "1",
+                    carrierId: "1",
+                    quantity: 5,
+                    createdAt: new Date(),
+                }
+            ],
+        };
+
         return new Promise<DeliveryPackage[]>((resolve, reject) => {
-            resolve([]);
+            resolve([exampleOfDeliveryPackage]);
         });
     }
 }
